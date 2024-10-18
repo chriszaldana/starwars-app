@@ -17,7 +17,9 @@
     "framer-motion": "^11.11.9",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "react-router-dom": "^6.27.0"
+    "react-hook-form": "^7.53.0",
+    "react-router-dom": "^6.27.0",
+    "sweetalert2": "^11.14.3"
   },
   "devDependencies": {
     "@eslint/js": "^9.11.1",
