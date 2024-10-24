@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import {createUserWithEmailAndPassword, getAuth} from 'firebase/auth'
-import {FormControl, Input, FormLabel, FormHelperText, Button, Alert, AlertIcon, AlertTitle, AlertDescription} from '@chakra-ui/react'
+import {FormControl, Input, FormLabel, FormHelperText, Button, Text, Container} from '@chakra-ui/react'
 import appFirebase from '../firebase/config'
 import { useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
@@ -15,13 +15,14 @@ const Register = () => {
 
   const {setName} = useContext(MyAppContext)
   const navigate = useNavigate()
-  const {register, handleSubmit} = useForm()
+  const {register, handleSubmit, formState} = useForm()
+  const {errors} = formState
 
   const functRegister = async(data) =>{
  
     try {
       await createUserWithEmailAndPassword(auth, data.email, data.pass)
-      setName(data.name)
+      setName(data.email)
       Swal.fire({
         title: "Custom width, padding, color, background.",
         width: 600,
@@ -58,17 +59,20 @@ const Register = () => {
 
   return (
     <>
+    
     <form onSubmit={handleSubmit(functRegister)} noValidate>
-      <FormControl>
-        <FormLabel mt="5">Name</FormLabel>
-        <Input type='text' id='name' {...register('name')} />
+    <Container>
+    <FormControl>
         <FormLabel mt="5">Email address</FormLabel>
-        <Input type='email' id='email' {...register('email')} />
+        <Input type='email' id='email' {...register('email', {required:{value: true, message: 'El correo es necesario para ingresar'}, pattern:{value: /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/, message: 'Correo invalido'}})} />
+        <Text color='red.400' mt='3'>{errors.email?.message}</Text>
         <FormLabel mt="5">Password</FormLabel>
-        <Input type='password' id='pass' {...register('pass')}/>
-        <FormHelperText>Well never share your email.</FormHelperText>
+        <Input type='password' id='pass'{...register('pass', {required:{value: true, message: 'Necesita ingresar la contraseña'}, minLength:{value: 8, message:'The password needs to be with 8 digits'}})}/>
+        <Text color='red.400' mt='3'>{errors.pass?.message}</Text>
         <Button type='submit' colorScheme="yellow" mt="5">Sign Up</Button>
       </FormControl>
+    </Container>
+      
     </form>
       
     </>
