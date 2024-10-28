@@ -62,7 +62,7 @@ const NavBar = () => {
         <Flex alignItems="center" justifyContent="center" >
         <Box display='flex' alignItems='center' justifyContent='center' mb={4}>
      <Link to='/'>
-      <Image boxSize='125px' src={SWLogo} alt='Star Wars Logo'/>
+      <Image boxSize='100px' src={SWLogo} alt='Star Wars Logo'/>
      </Link>
     </Box>
           <Spacer />

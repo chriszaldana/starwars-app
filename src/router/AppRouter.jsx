@@ -9,6 +9,7 @@ import Planets from '../pages/Planets'
 import Starships from '../pages/Starships'
 import MainPage from '../pages/MainPage'
 import { MyAppProvider } from '../context/MyAppContext'
+import Footer from '../pages/components/Footer'
 
 
 
@@ -28,6 +29,7 @@ const AppRouter = () => {
           <Route path='/starships' element = {<Starships/>}/>
         </Route>
       </Routes>
+      <Footer/>
     </MyAppProvider>
     
         
