@@ -28,14 +28,8 @@ const Login = () => {
       title: "Welcome, the force may be with you",
       width: 600,
       padding: "3em",
-      color: "#716add",
-      background: "#fff url(/images/trees.png)",
-      backdrop: `
-        rgba(0,0,123,0.4)
-        url("/images/nyan-cat.gif")
-        left top
-        no-repeat
-      `
+      color: "#fff",
+      background: "#000 url(/images/trees.png)",
     });
     navigate('/')
     } catch (error) {

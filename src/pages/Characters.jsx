@@ -32,7 +32,7 @@ const Characters = () => {
   }, []);
 
   return (
-    <Box padding={1}>
+    <Box padding={5}>
       <SimpleGrid spacing={6} templateColumns="repeat(auto-fill, minmax(200px, 1fr))">
         {characters.map((character, index) => (
           <Card
